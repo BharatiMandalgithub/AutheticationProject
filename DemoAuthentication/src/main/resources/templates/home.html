@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Gift Hive</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f0f2f5, #e0e0e0);
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .message-box {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: bold;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ✅ Success Message Box with Username -->
+    <div id="successMessage" class="message-box"></div>
+
+    <div class="container">
+        <h2>Welcome to <b>Gift Hive</b></h2>
+        <p>Explore our amazing products and find the perfect gift for any occasion.</p>
+        <a href="#shop" class="btn">Explore Now</a>
+    </div>
+
+    <script>
+        // ✅ Extract "login=success" and "user" from the URL
+        window.onload = function () {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has("login") && params.get("login") === "success") {
+                const user = params.get("user") || "User"; // Default to "User" if name is missing
+                document.getElementById("successMessage").innerText = `Login Successful! Welcome, ${user} 🎉`;
+                document.getElementById("successMessage").style.display = "block";
+            }
+        };
+    </script>
+
+</body>
+</html>
